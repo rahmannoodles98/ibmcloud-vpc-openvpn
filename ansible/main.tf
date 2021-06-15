@@ -1,5 +1,5 @@
 resource "local_file" "ansible-inventory" {
-  content = templatefile("${path.module}/inventory.tmpl",
+  content = templatefile("${path.module}/inventory.tpl",
     {
       instances  = var.instances
       bastion_ip = var.bastion_ip
@@ -9,7 +9,7 @@ resource "local_file" "ansible-inventory" {
 }
 
 resource "local_file" "ansible-config" {
-  content = templatefile("${path.module}/ansible.cfg.tmpl",
+  content = templatefile("${path.module}/ansible.cfg.tpl",
     {
       bastion_ip = var.bastion_ip
     }
@@ -30,7 +30,7 @@ resource "local_file" "ssh-key" {
 }
 
 resource "local_file" "openvpn-playbook" {
-  content = templatefile("${path.module}/playbook-openvpn.yml.tmpl",
+  content = templatefile("${path.module}/playbook-openvpn.yml.tpl",
     {
       bastion_ip = var.bastion_ip
       subnets = var.subnets
